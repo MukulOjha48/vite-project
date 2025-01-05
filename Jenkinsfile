@@ -10,11 +10,6 @@ pipeline {
                 }
             }
             steps {
-
-                step('cleanup repository') {
-                    cleanWs()
-                }
-                step('build') {
                     sh '''
                     ls -l
                     node --version
@@ -27,4 +22,3 @@ pipeline {
             }
         } 
     }
-}
