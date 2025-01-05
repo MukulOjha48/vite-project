@@ -1,6 +1,21 @@
 pipeline {
     agent any
+    options {
+        skipDefaultCheckout(true)
+    }
     stages {
+        stage('cleanup') {
+            steps {
+                cleanWs()
+            }
+        }
+
+        stage('checkout') {
+            steps {
+                checkout scm 
+            }
+        }
+
         stage('Build') {
             agent {
                 dockerContainer {
