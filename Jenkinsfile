@@ -10,14 +10,20 @@ pipeline {
                 }
             }
             steps {
-                sh '''
-                ls -l
-                node --version
-                npm --version
-                npm install
-                npm run build
-                ls -l
-                '''
+
+                step('cleanup repository') {
+                    cleanWs()
+                }
+                step('build') {
+                    sh '''
+                    ls -l
+                    node --version
+                    npm --version
+                    npm install
+                    npm run build
+                    ls -l
+                    '''
+                }
             }
         } 
     }
